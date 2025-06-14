@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 // Helper for fallback avatar
+
+const String iconFont = 'MaterialIcons';
+const String? iconFontPackage = null;
+const IconData chat_bubble = IconData(
+  0xf3fb,
+  fontFamily: iconFont,
+  fontPackage: iconFontPackage,
+);
 
 class PostCard extends StatelessWidget {
   final String imagePath;
@@ -194,10 +203,10 @@ class VideoCard extends StatelessWidget {
                       ),
                       Positioned.fill(
                         child: Center(
-                          child: Image.asset(
-                            'assets/images/play_button.png',
-                            width: 48,
-                            height: 48,
+                          child: Icon(
+                            CupertinoIcons.play_rectangle_fill,
+                            color: Colors.white,
+                            size: 48,
                           ),
                         ),
                       ),
@@ -701,7 +710,7 @@ class ActionBar extends StatelessWidget {
             const SizedBox(width: 5),
             Text('310', style: TextStyle(color: Colors.white, fontSize: 14)),
             const SizedBox(width: 5),
-            Icon(Icons.comment, color: Colors.white54, size: 20),
+            Icon(CupertinoIcons.chat_bubble, color: Colors.white, size: 20),
             const SizedBox(width: 8),
             Text("|", style: TextStyle(color: Colors.white, fontSize: 18)),
             const SizedBox(width: 8),
@@ -740,7 +749,7 @@ class ActionBar extends StatelessWidget {
                 Text('5k+',
                     style: TextStyle(color: Colors.white, fontSize: 14)),
                 const SizedBox(width: 5),
-                Icon(Icons.thumb_up_alt_outlined,
+                Icon(CupertinoIcons.hand_thumbsup,
                     color: Colors.white, size: 20),
                 const SizedBox(width: 8),
               ],
@@ -749,7 +758,8 @@ class ActionBar extends StatelessWidget {
             const SizedBox(width: 8),
             Text('50', style: TextStyle(color: Colors.white, fontSize: 14)),
             const SizedBox(width: 5),
-            Icon(Icons.share, color: Colors.white54, size: 20),
+            Icon(CupertinoIcons.arrowshape_turn_up_right,
+                color: Colors.white, size: 20),
           ],
         ),
       ),

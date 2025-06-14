@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'widgets.dart';
 
 class HomePage extends StatelessWidget {
@@ -72,6 +73,27 @@ class HomePage extends StatelessWidget {
           TextCard(),
           const SizedBox(height: 15),
           PollCard(),
+          const SizedBox(height: 30),
+          SizedBox(
+            height: 181,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: List.generate(
+                  10,
+                  (index) => ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      width: 103,
+                      height: 181,
+                      margin: EdgeInsets.only(right: 10),
+                      color: Colors.blueGrey,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -79,15 +101,31 @@ class HomePage extends StatelessWidget {
         selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.white,
         type: BottomNavigationBarType.fixed,
-        items: const [
+        items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Jobs'),
+          BottomNavigationBarItem(icon: Icon(Icons.store), label: 'Stores'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.add_box_outlined), label: 'Add'),
+              icon: Icon(CupertinoIcons.ellipses_bubble), label: 'Chat'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.notifications_none), label: 'Alerts'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person_outline), label: 'Profile'),
+              icon: Container(
+                width: 24,
+                height: 24,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  border: Border.all(color: Colors.white, width: 1),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(5),
+                  child: Image.asset(
+                    'assets/images/profileuser.png',
+                    width: 24,
+                    height: 24,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              label: 'Profile'),
         ],
       ),
     );
