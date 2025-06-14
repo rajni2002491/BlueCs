@@ -95,14 +95,14 @@ class PostCard extends StatelessWidget {
                           children: [
                             Text('5 days ago',
                                 style: TextStyle(
-                                    color: Colors.white54, fontSize: 12)),
+                                    color: Color(0xFF82B4DF), fontSize: 12)),
                             const Spacer(),
                             Icon(Icons.remove_red_eye,
-                                color: Colors.white54, size: 16),
+                                color: Color(0xFF82B4DF), size: 16),
                             const SizedBox(width: 4),
                             Text('25k',
                                 style: TextStyle(
-                                    color: Colors.white54, fontSize: 12)),
+                                    color: Color(0xFF82B4DF), fontSize: 12)),
                           ],
                         ),
                         const SizedBox(height: 8),
@@ -257,14 +257,14 @@ class VideoCard extends StatelessWidget {
                           children: [
                             Text('2 hours ago',
                                 style: TextStyle(
-                                    color: Colors.white54, fontSize: 12)),
+                                    color: Color(0xFF82B4DF), fontSize: 12)),
                             const Spacer(),
                             Icon(Icons.remove_red_eye,
-                                color: Colors.white54, size: 16),
+                                color: Color(0xFF82B4DF), size: 16),
                             const SizedBox(width: 4),
                             Text('12k',
                                 style: TextStyle(
-                                    color: Colors.white54, fontSize: 12)),
+                                    color: Color(0xFF82B4DF), fontSize: 12)),
                           ],
                         ),
                         const SizedBox(height: 8),
@@ -433,15 +433,15 @@ class TextCard extends StatelessWidget {
                           children: const [
                             Text("5 days ago",
                                 style: TextStyle(
-                                    color: Colors.white54, fontSize: 12)),
+                                    color: Color(0xFF82B4DF), fontSize: 12)),
                             Row(
                               children: [
                                 Icon(Icons.visibility_outlined,
-                                    size: 16, color: Colors.white54),
+                                    size: 16, color: Color(0xFF82B4DF)),
                                 SizedBox(width: 4),
                                 Text("25k",
                                     style: TextStyle(
-                                        color: Colors.white54, fontSize: 12)),
+                                        color: Color(0xFF82B4DF), fontSize: 12)),
                               ],
                             )
                           ],
@@ -538,20 +538,20 @@ class PollCard extends StatelessWidget {
                           children: [
                             Text('5 days ago',
                                 style: TextStyle(
-                                    color: Colors.white54, fontSize: 12)),
+                                    color: Color(0xFF82B4DF), fontSize: 12)),
                             Row(
                               children: [
                                 Icon(Icons.remove_red_eye,
-                                    color: Colors.white54, size: 16),
+                                    color: Color(0xFF82B4DF), size: 16),
                                 const SizedBox(width: 4),
                                 Text('25k',
                                     style: TextStyle(
-                                        color: Colors.white54, fontSize: 12)),
+                                        color: Color(0xFF82B4DF), fontSize: 12)),
                               ],
                             ),
                           ],
                         ),
-                        const SizedBox(height: 12),
+                        const SizedBox(height: 28),
                         Center(
                           child: Text(
                             'What is the most important factor when choosing a new job?',
@@ -563,7 +563,7 @@ class PollCard extends StatelessWidget {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 18),
+                        const SizedBox(height: 28),
                         // Poll options with labels
                         PollOption(
                             text: 'Salary & Benefits',
@@ -576,7 +576,7 @@ class PollCard extends StatelessWidget {
                             text: 'Career Growth Opportunities', label: 'C.'),
                         const SizedBox(height: 10),
                         PollOption(text: 'Company Culture', label: 'D.'),
-                        const SizedBox(height: 18),
+                        const SizedBox(height: 28),
                         Row(
                           children: [
                             CircleAvatar(
@@ -681,7 +681,7 @@ class ActionBar extends StatelessWidget {
         width: 340,
         height: 56,
         decoration: BoxDecoration(
-          color: const Color(0xFF232E3C),
+          color: const Color(0xFF1C252D),
           borderRadius: BorderRadius.circular(50),
           border: Border.all(color: Colors.white24, width: 0.5),
         ),
@@ -708,9 +708,9 @@ class ActionBar extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 5),
-            Text('310', style: TextStyle(color: Colors.white, fontSize: 14)),
+            Text('310', style: TextStyle(color: Colors.white, fontSize: 12)),
             const SizedBox(width: 5),
-            Icon(CupertinoIcons.chat_bubble, color: Colors.white, size: 20),
+            Icon(CupertinoIcons.chat_bubble, color: Colors.white, size: 22),
             const SizedBox(width: 8),
             Text("|", style: TextStyle(color: Colors.white, fontSize: 18)),
             const SizedBox(width: 8),
@@ -747,19 +747,19 @@ class ActionBar extends StatelessWidget {
                 ),
                 const SizedBox(width: 36),
                 Text('5k+',
-                    style: TextStyle(color: Colors.white, fontSize: 14)),
+                    style: TextStyle(color: Colors.white, fontSize: 12)),
                 const SizedBox(width: 5),
                 Icon(CupertinoIcons.hand_thumbsup,
-                    color: Colors.white, size: 20),
+                    color: Colors.white, size: 22),
                 const SizedBox(width: 8),
               ],
             ),
             Text("|", style: TextStyle(color: Colors.white, fontSize: 18)),
             const SizedBox(width: 8),
-            Text('50', style: TextStyle(color: Colors.white, fontSize: 14)),
+            Text('50', style: TextStyle(color: Colors.white, fontSize: 12)),
             const SizedBox(width: 5),
             Icon(CupertinoIcons.arrowshape_turn_up_right,
-                color: Colors.white, size: 20),
+                color: Colors.white, size: 22),
           ],
         ),
       ),

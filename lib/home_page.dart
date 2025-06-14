@@ -74,26 +74,7 @@ class HomePage extends StatelessWidget {
           const SizedBox(height: 15),
           PollCard(),
           const SizedBox(height: 30),
-          SizedBox(
-            height: 181,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: List.generate(
-                  10,
-                  (index) => ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Container(
-                      width: 103,
-                      height: 181,
-                      margin: EdgeInsets.only(right: 10),
-                      color: Colors.blueGrey,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
+          
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
