@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
                 child: Row(
                   children: [
                     const SizedBox(width: 12),
-                    const Icon(Icons.search, color: Colors.white54),
+                    const Icon(Icons.search, color: Colors.white),
                     const SizedBox(width: 8),
                     const Expanded(
                       child: TextField(
