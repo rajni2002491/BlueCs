@@ -59,6 +59,8 @@ class HomePage extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 80),
         children: [
           const SizedBox(height: 15),
+          _TopNavBar(),
+          const SizedBox(height: 15),
           // --- Example Post Card ---
           _PostCard(),
           const SizedBox(height: 15),
@@ -95,6 +97,70 @@ class HomePage extends StatelessWidget {
   }
 }
 
+// Helper widget for fallback image
+class FallbackImage extends StatelessWidget {
+  final String assetPath;
+  final String networkUrl;
+  final double? width;
+  final double? height;
+  final BoxFit? fit;
+  const FallbackImage({
+    required this.assetPath,
+    required this.networkUrl,
+    this.width,
+    this.height,
+    this.fit,
+  });
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(
+      assetPath,
+      width: width,
+      height: height,
+      fit: fit,
+      errorBuilder: (context, error, stackTrace) {
+        return Image.network(
+          networkUrl,
+          width: width,
+          height: height,
+          fit: fit,
+        );
+      },
+    );
+  }
+}
+
+// Helper for fallback avatar
+class FallbackAvatar extends StatelessWidget {
+  final String assetPath;
+  final String networkUrl;
+  final double radius;
+  const FallbackAvatar({
+    required this.assetPath,
+    required this.networkUrl,
+    required this.radius,
+  });
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      radius: radius,
+      backgroundImage: AssetImage(assetPath),
+      onBackgroundImageError: (_, __) {},
+      child: Image.asset(
+        assetPath,
+        errorBuilder: (context, error, stackTrace) {
+          return CircleAvatar(
+            radius: radius,
+            backgroundImage: NetworkImage(networkUrl),
+          );
+        },
+        width: 0,
+        height: 0,
+      ),
+    );
+  }
+}
+
 // --- Post Card Widget ---
 class _PostCard extends StatelessWidget {
   @override
@@ -114,8 +180,10 @@ class _PostCard extends StatelessWidget {
                 topLeft: Radius.circular(16),
                 topRight: Radius.circular(16),
               ),
-              child: Image.asset(
-                'assets/images/bluecs1.png',
+              child: FallbackImage(
+                assetPath: 'assets/images/bluecs1.png',
+                networkUrl:
+                    'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
                 width: double.infinity,
                 height: 180,
                 fit: BoxFit.cover,
@@ -157,9 +225,10 @@ class _PostCard extends StatelessWidget {
                   const SizedBox(height: 12),
                   Row(
                     children: [
-                      CircleAvatar(
-                        backgroundImage:
-                            AssetImage('assets/images/techsavvy.png'),
+                      FallbackAvatar(
+                        assetPath: 'assets/images/techsavvy.png',
+                        networkUrl:
+                            'https://randomuser.me/api/portraits/men/32.jpg',
                         radius: 18,
                       ),
                       const SizedBox(width: 8),
@@ -212,8 +281,10 @@ class _VideoCard extends StatelessWidget {
                     topLeft: Radius.circular(16),
                     topRight: Radius.circular(16),
                   ),
-                  child: Image.asset(
-                    'assets/images/video_thumb.png',
+                  child: FallbackImage(
+                    assetPath: 'assets/images/video_thumb.png',
+                    networkUrl:
+                        'https://images.unsplash.com/photo-1464983953574-0892a716854b',
                     width: double.infinity,
                     height: 180,
                     fit: BoxFit.cover,
@@ -263,9 +334,10 @@ class _VideoCard extends StatelessWidget {
                   const SizedBox(height: 12),
                   Row(
                     children: [
-                      CircleAvatar(
-                        backgroundImage:
-                            AssetImage('assets/images/techsavvy.png'),
+                      FallbackAvatar(
+                        assetPath: 'assets/images/techsavvy.png',
+                        networkUrl:
+                            'https://randomuser.me/api/portraits/men/32.jpg',
                         radius: 18,
                       ),
                       const SizedBox(width: 8),
@@ -383,9 +455,10 @@ class _PollCard extends StatelessWidget {
                   const SizedBox(height: 12),
                   Row(
                     children: [
-                      CircleAvatar(
-                        backgroundImage:
-                            AssetImage('assets/images/techsavvy.png'),
+                      FallbackAvatar(
+                        assetPath: 'assets/images/techsavvy.png',
+                        networkUrl:
+                            'https://randomuser.me/api/portraits/men/32.jpg',
                         radius: 18,
                       ),
                       const SizedBox(width: 8),
@@ -452,8 +525,10 @@ class _HorizontalAvatars extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           for (int i = 1; i <= 4; i++)
-            CircleAvatar(
-              backgroundImage: AssetImage('assets/images/avatar$i.png'),
+            FallbackAvatar(
+              assetPath: 'assets/images/avatar$i.png',
+              networkUrl:
+                  'https://randomuser.me/api/portraits/men/${30 + i}.jpg',
               radius: 24,
             ),
         ],
@@ -485,10 +560,11 @@ class _ActionBar extends StatelessWidget {
                   for (int i = 0; i < 3; i++)
                     Positioned(
                       left: i * 16,
-                      child: CircleAvatar(
+                      child: FallbackAvatar(
+                        assetPath: 'assets/images/avatar${i + 1}.png',
+                        networkUrl:
+                            'https://randomuser.me/api/portraits/men/${30 + i}.jpg',
                         radius: 14,
-                        backgroundImage:
-                            AssetImage('assets/images/avatar${i + 1}.png'),
                       ),
                     ),
                 ],
@@ -514,6 +590,77 @@ class _ActionBar extends StatelessWidget {
             Icon(Icons.share, color: Colors.white54, size: 20),
           ],
         ),
+      ),
+    );
+  }
+}
+
+// --- Top Navigation Bar Widget ---
+class _TopNavBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          const SizedBox(width: 8),
+          // All Posts (selected)
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+            margin: const EdgeInsets.only(right: 8),
+            decoration: BoxDecoration(
+              color: const Color(0xFF23313F),
+              borderRadius: BorderRadius.circular(50),
+              border: Border.all(color: Color(0xFF00B2FF), width: 2),
+            ),
+            child: const Text(
+              'All Posts',
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
+          ),
+          // Videos
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+            margin: const EdgeInsets.only(right: 8),
+            decoration: BoxDecoration(
+              color: Colors.transparent,
+              borderRadius: BorderRadius.circular(50),
+              border: Border.all(color: Colors.white, width: 1),
+            ),
+            child: const Text(
+              'Videos',
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
+          ),
+          // Short Videos
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+            margin: const EdgeInsets.only(right: 8),
+            decoration: BoxDecoration(
+              color: Colors.transparent,
+              borderRadius: BorderRadius.circular(50),
+              border: Border.all(color: Colors.white, width: 1),
+            ),
+            child: const Text(
+              'Short Videos',
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
+          ),
+          // Nearby
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+            margin: const EdgeInsets.only(right: 8),
+            decoration: BoxDecoration(
+              color: Colors.transparent,
+              borderRadius: BorderRadius.circular(50),
+              border: Border.all(color: Colors.white, width: 1),
+            ),
+            child: const Text(
+              'Nearby',
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
+          ),
+        ],
       ),
     );
   }
