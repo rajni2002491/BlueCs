@@ -102,11 +102,11 @@ class PostCard extends StatelessWidget {
                 ],
               ),
               Positioned(
-                left: (358 * 0.15),
-                right: (358 * 0.15),
+                left: (358 - 322) / 2,
+                right: (358 - 322) / 2,
                 bottom: -24,
                 child: SizedBox(
-                  width: 358 * 0.7,
+                  width: 322,
                   child: ActionBar(),
                 ),
               ),
@@ -225,11 +225,11 @@ class VideoCard extends StatelessWidget {
                 ],
               ),
               Positioned(
-                left: (358 * 0.15),
-                right: (358 * 0.15),
+                left: (358 - 322) / 2,
+                right: (358 - 322) / 2,
                 bottom: -24,
                 child: SizedBox(
-                  width: 358 * 0.7,
+                  width: 322,
                   child: ActionBar(),
                 ),
               ),
@@ -391,11 +391,11 @@ class TextCard extends StatelessWidget {
                 ],
               ),
               Positioned(
-                left: (358 * 0.15),
-                right: (358 * 0.15),
+                left: (358 - 322) / 2,
+                right: (358 - 322) / 2,
                 bottom: -24,
                 child: SizedBox(
-                  width: 358 * 0.7,
+                  width: 322,
                   child: ActionBar(),
                 ),
               ),
@@ -507,11 +507,11 @@ class PollCard extends StatelessWidget {
                 ],
               ),
               Positioned(
-                left: (358 * 0.15),
-                right: (358 * 0.15),
+                left: (358 - 322) / 2,
+                right: (358 - 322) / 2,
                 bottom: -24,
                 child: SizedBox(
-                  width: 358 * 0.7,
+                  width: 322,
                   child: ActionBar(),
                 ),
               ),
@@ -575,89 +575,90 @@ class PollOption extends StatelessWidget {
 class ActionBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
+    return Center(
       child: Container(
+        width: 340,
+        height: 56,
         decoration: BoxDecoration(
           color: const Color(0xFF232E3C),
           borderRadius: BorderRadius.circular(50),
+          border: Border.all(color: Colors.white24, width: 0.5),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              // Overlapping avatars
-              SizedBox(
-                width: 64,
-                height: 28,
-                child: Stack(
-                  children: [
-                    for (int i = 0; i < 4; i++)
-                      Positioned(
-                        left: i * 16,
-                        child: CircleAvatar(
-                          radius: 14,
-                          backgroundImage:
-                              AssetImage('assets/images/avatar${i + 1}.png'),
-                        ),
-                      ),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 4),
-              Text('310', style: TextStyle(color: Colors.white)),
-              const SizedBox(width: 8),
-              Icon(Icons.comment, color: Colors.white54, size: 20),
-              const SizedBox(width: 10),
-              Text("|", style: TextStyle(color: Colors.white, fontSize: 20)),
-              const SizedBox(width: 10),
-              Row(
+        padding: const EdgeInsets.fromLTRB(15, 3, 15, 3),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 56,
+              height: 24,
+              child: Stack(
                 children: [
-                  Stack(
-                    clipBehavior: Clip.none,
-                    children: [
-                      Positioned(
-                        left: 40,
-                        child: CircleAvatar(
-                          radius: 12,
-                          backgroundColor: Colors.amber,
-                          child: const Icon(Icons.emoji_emotions,
-                              color: Colors.white, size: 16),
-                        ),
-                      ),
-                      Positioned(
-                        left: 20,
-                        child: CircleAvatar(
-                          radius: 12,
-                          backgroundColor: Colors.pinkAccent,
-                          child: const Icon(Icons.favorite,
-                              color: Colors.white, size: 16),
-                        ),
-                      ),
-                      const CircleAvatar(
+                  for (int i = 0; i < 4; i++)
+                    Positioned(
+                      left: i * 12,
+                      child: CircleAvatar(
                         radius: 12,
-                        backgroundColor: Colors.blue,
-                        child: Icon(Icons.thumb_up_alt_rounded,
-                            color: Colors.white, size: 16),
+                        backgroundImage:
+                            AssetImage('assets/images/avatar${i + 1}.png'),
                       ),
-                    ],
-                  ),
-                  const SizedBox(width: 45),
-                  Text('5k+', style: TextStyle(color: Colors.white)),
-                  const SizedBox(width: 8),
-                  Icon(Icons.thumb_up_alt_outlined,
-                      color: Colors.white, size: 20),
-                  const SizedBox(width: 10),
+                    ),
                 ],
               ),
-              Text("|", style: TextStyle(color: Colors.white, fontSize: 20)),
-              const SizedBox(width: 8),
-              Text('50', style: TextStyle(color: Colors.white)),
-              const SizedBox(width: 5),
-              Icon(Icons.share, color: Colors.white54, size: 20),
-            ],
-          ),
+            ),
+            const SizedBox(width: 5),
+            Text('310', style: TextStyle(color: Colors.white, fontSize: 14)),
+            const SizedBox(width: 5),
+            Icon(Icons.comment, color: Colors.white54, size: 20),
+            const SizedBox(width: 8),
+            Text("|", style: TextStyle(color: Colors.white, fontSize: 18)),
+            const SizedBox(width: 8),
+            Row(
+              children: [
+                Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    Positioned(
+                      left: 36,
+                      child: CircleAvatar(
+                        radius: 12,
+                        backgroundColor: Colors.amber,
+                        child: const Icon(Icons.emoji_emotions,
+                            color: Colors.white, size: 16),
+                      ),
+                    ),
+                    Positioned(
+                      left: 18,
+                      child: CircleAvatar(
+                        radius: 12,
+                        backgroundColor: Colors.pinkAccent,
+                        child: const Icon(Icons.favorite,
+                            color: Colors.white, size: 16),
+                      ),
+                    ),
+                    const CircleAvatar(
+                      radius: 12,
+                      backgroundColor: Colors.blue,
+                      child: Icon(Icons.thumb_up_alt_rounded,
+                          color: Colors.white, size: 16),
+                    ),
+                  ],
+                ),
+                const SizedBox(width: 36),
+                Text('5k+',
+                    style: TextStyle(color: Colors.white, fontSize: 14)),
+                const SizedBox(width: 5),
+                Icon(Icons.thumb_up_alt_outlined,
+                    color: Colors.white, size: 20),
+                const SizedBox(width: 8),
+              ],
+            ),
+            Text("|", style: TextStyle(color: Colors.white, fontSize: 18)),
+            const SizedBox(width: 8),
+            Text('50', style: TextStyle(color: Colors.white, fontSize: 14)),
+            const SizedBox(width: 5),
+            Icon(Icons.share, color: Colors.white54, size: 20),
+          ],
         ),
       ),
     );
