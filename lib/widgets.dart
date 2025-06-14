@@ -1,35 +1,6 @@
 import 'package:flutter/material.dart';
 
 // Helper for fallback avatar
-class FallbackAvatar extends StatelessWidget {
-  final String assetPath;
-  final String networkUrl;
-  final double radius;
-  const FallbackAvatar({
-    required this.assetPath,
-    required this.networkUrl,
-    required this.radius,
-  });
-  @override
-  Widget build(BuildContext context) {
-    return CircleAvatar(
-      radius: radius,
-      backgroundImage: AssetImage(assetPath),
-      onBackgroundImageError: (_, __) {},
-      child: Image.asset(
-        assetPath,
-        errorBuilder: (context, error, stackTrace) {
-          return CircleAvatar(
-            radius: radius,
-            backgroundImage: NetworkImage(networkUrl),
-          );
-        },
-        width: 0,
-        height: 0,
-      ),
-    );
-  }
-}
 
 class PostCard extends StatelessWidget {
   final String imagePath;
@@ -42,6 +13,7 @@ class PostCard extends StatelessWidget {
       child: Center(
         child: Container(
           width: 375,
+          height: 500,
           decoration: BoxDecoration(
             color: const Color(0xFF23313F),
             borderRadius: BorderRadius.circular(10),
@@ -58,7 +30,7 @@ class PostCard extends StatelessWidget {
                 child: Image.asset(
                   imagePath,
                   width: double.infinity,
-                  height: 180,
+                  height: 246,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -98,11 +70,10 @@ class PostCard extends StatelessWidget {
                     const SizedBox(height: 12),
                     Row(
                       children: [
-                        FallbackAvatar(
-                          assetPath: 'assets/images/techsavvy.png',
-                          networkUrl:
-                              'https://randomuser.me/api/portraits/men/32.jpg',
+                        CircleAvatar(
                           radius: 18,
+                          backgroundImage:
+                              AssetImage('assets/images/techsavvy.png'),
                         ),
                         const SizedBox(width: 8),
                         Column(
@@ -142,6 +113,7 @@ class VideoCard extends StatelessWidget {
       child: Center(
         child: Container(
           width: 375,
+          height: 500,
           decoration: BoxDecoration(
             color: const Color(0xFF23313F),
             borderRadius: BorderRadius.circular(10),
@@ -160,7 +132,7 @@ class VideoCard extends StatelessWidget {
                     child: Image.asset(
                       'assets/images/video.png',
                       width: double.infinity,
-                      height: 180,
+                      height: 246,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -208,11 +180,10 @@ class VideoCard extends StatelessWidget {
                     const SizedBox(height: 12),
                     Row(
                       children: [
-                        FallbackAvatar(
-                          assetPath: 'assets/images/techsavvy.png',
-                          networkUrl:
-                              'https://randomuser.me/api/portraits/men/32.jpg',
+                        CircleAvatar(
                           radius: 18,
+                          backgroundImage:
+                              AssetImage('assets/images/techsavvy.png'),
                         ),
                         const SizedBox(width: 8),
                         Column(
@@ -252,6 +223,7 @@ class TextCard extends StatelessWidget {
       child: Center(
         child: Container(
           width: 375,
+          height: 430,
           decoration: BoxDecoration(
             color: Colors.orange[700],
             borderRadius: BorderRadius.circular(10),
@@ -288,6 +260,7 @@ class PollCard extends StatelessWidget {
       child: Center(
         child: Container(
           width: 375,
+          height: 430,
           decoration: BoxDecoration(
             color: const Color(0xFF23313F),
             borderRadius: BorderRadius.circular(10),
@@ -335,11 +308,10 @@ class PollCard extends StatelessWidget {
                     const SizedBox(height: 12),
                     Row(
                       children: [
-                        FallbackAvatar(
-                          assetPath: 'assets/images/techsavvy.png',
-                          networkUrl:
-                              'https://randomuser.me/api/portraits/men/32.jpg',
+                        CircleAvatar(
                           radius: 18,
+                          backgroundImage:
+                              AssetImage('assets/images/techsavvy.png'),
                         ),
                         const SizedBox(width: 8),
                         Column(
@@ -407,46 +379,48 @@ class ActionBar extends StatelessWidget {
           borderRadius: BorderRadius.circular(50),
         ),
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-        child: Row(
-          children: [
-            // Overlapping avatars
-            SizedBox(
-              width: 48,
-              height: 28,
-              child: Stack(
-                children: [
-                  for (int i = 0; i < 3; i++)
-                    Positioned(
-                      left: i * 16,
-                      child: FallbackAvatar(
-                        assetPath: 'assets/images/avatar${i + 1}.png',
-                        networkUrl:
-                            'https://randomuser.me/api/portraits/men/${30 + i}.jpg',
-                        radius: 14,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              // Overlapping avatars
+              SizedBox(
+                width: 48,
+                height: 28,
+                child: Stack(
+                  children: [
+                    for (int i = 0; i < 4; i++)
+                      Positioned(
+                        left: i * 16,
+                        child: CircleAvatar(
+                          radius: 14,
+                          backgroundImage:
+                              AssetImage('assets/images/avatar${i + 1}.png'),
+                        ),
                       ),
-                    ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(width: 8),
-            Icon(Icons.comment, color: Colors.white54, size: 20),
-            const SizedBox(width: 4),
-            Text('310', style: TextStyle(color: Colors.white)),
-            const SizedBox(width: 16),
-            Icon(Icons.thumb_up_alt_rounded, color: Colors.blue, size: 20),
-            const SizedBox(width: 4),
-            Text('5k+', style: TextStyle(color: Colors.white)),
-            const SizedBox(width: 16),
-            Icon(Icons.favorite, color: Colors.pinkAccent, size: 20),
-            const SizedBox(width: 4),
-            Icon(Icons.emoji_emotions, color: Colors.amber, size: 20),
-            const SizedBox(width: 16),
-            Icon(Icons.thumb_up_alt_outlined, color: Colors.white, size: 20),
-            const SizedBox(width: 4),
-            Text('50', style: TextStyle(color: Colors.white)),
-            const SizedBox(width: 16),
-            Icon(Icons.share, color: Colors.white54, size: 20),
-          ],
+              const SizedBox(width: 8),
+              Icon(Icons.comment, color: Colors.white54, size: 20),
+              const SizedBox(width: 4),
+              Text('310', style: TextStyle(color: Colors.white)),
+              const SizedBox(width: 16),
+              Icon(Icons.thumb_up_alt_rounded, color: Colors.blue, size: 20),
+              const SizedBox(width: 4),
+              Text('5k+', style: TextStyle(color: Colors.white)),
+              const SizedBox(width: 16),
+              Icon(Icons.favorite, color: Colors.pinkAccent, size: 20),
+              const SizedBox(width: 4),
+              Icon(Icons.emoji_emotions, color: Colors.amber, size: 20),
+              const SizedBox(width: 16),
+              Icon(Icons.thumb_up_alt_outlined, color: Colors.white, size: 20),
+              const SizedBox(width: 4),
+              Text('50', style: TextStyle(color: Colors.white)),
+              const SizedBox(width: 16),
+              Icon(Icons.share, color: Colors.white54, size: 20),
+            ],
+          ),
         ),
       ),
     );
