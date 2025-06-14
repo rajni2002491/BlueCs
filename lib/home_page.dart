@@ -73,8 +73,29 @@ class HomePage extends StatelessWidget {
           TextCard(),
           const SizedBox(height: 15),
           PollCard(),
-          const SizedBox(height: 30),
-          
+          const SizedBox(height: 60),
+          SizedBox(
+            height: 181,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              itemCount: 4,
+              itemBuilder: (context, index) {
+                return Container(
+                  width: 103,
+                  height: 181,
+                  margin: const EdgeInsets.only(right: 8),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.asset(
+                      'assets/images/makeup${index + 1}.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
