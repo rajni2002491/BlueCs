@@ -20,6 +20,7 @@ class PostCard extends StatelessWidget {
             border: Border.all(color: Colors.black, width: 1),
           ),
           child: Stack(
+            clipBehavior: Clip.none,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,10 +102,13 @@ class PostCard extends StatelessWidget {
                 ],
               ),
               Positioned(
-                bottom: 0,
-                left: 0,
-                right: 0,
-                child: ActionBar(),
+                left: (358 * 0.15),
+                right: (358 * 0.15),
+                bottom: -24,
+                child: SizedBox(
+                  width: 358 * 0.7,
+                  child: ActionBar(),
+                ),
               ),
             ],
           ),
@@ -129,6 +133,7 @@ class VideoCard extends StatelessWidget {
             border: Border.all(color: Colors.black, width: 1),
           ),
           child: Stack(
+            clipBehavior: Clip.none,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -220,10 +225,13 @@ class VideoCard extends StatelessWidget {
                 ],
               ),
               Positioned(
-                bottom: 0,
-                left: 0,
-                right: 0,
-                child: ActionBar(),
+                left: (358 * 0.15),
+                right: (358 * 0.15),
+                bottom: -24,
+                child: SizedBox(
+                  width: 358 * 0.7,
+                  child: ActionBar(),
+                ),
               ),
             ],
           ),
@@ -249,6 +257,7 @@ class TextCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
           ),
           child: Stack(
+            clipBehavior: Clip.none,
             children: [
               Column(
                 children: [
@@ -382,10 +391,13 @@ class TextCard extends StatelessWidget {
                 ],
               ),
               Positioned(
-                bottom: 0,
-                left: 0,
-                right: 0,
-                child: ActionBar(),
+                left: (358 * 0.15),
+                right: (358 * 0.15),
+                bottom: -24,
+                child: SizedBox(
+                  width: 358 * 0.7,
+                  child: ActionBar(),
+                ),
               ),
             ],
           ),
@@ -410,6 +422,7 @@ class PollCard extends StatelessWidget {
             border: Border.all(color: Colors.black, width: 1),
           ),
           child: Stack(
+            clipBehavior: Clip.none,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -441,7 +454,7 @@ class PollCard extends StatelessWidget {
                         Center(
                           child: Text(
                             'What is the most important factor when choosing a new job?',
-                            textAlign: TextAlign.center,
+                            textAlign: TextAlign.left,
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w700,
@@ -494,10 +507,13 @@ class PollCard extends StatelessWidget {
                 ],
               ),
               Positioned(
-                bottom: 0,
-                left: 0,
-                right: 0,
-                child: ActionBar(),
+                left: (358 * 0.15),
+                right: (358 * 0.15),
+                bottom: -24,
+                child: SizedBox(
+                  width: 358 * 0.7,
+                  child: ActionBar(),
+                ),
               ),
             ],
           ),
@@ -515,11 +531,12 @@ class PollOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         if (label != null)
           Padding(
-            padding: const EdgeInsets.only(right: 8.0),
+            padding: const EdgeInsets.only(right: 10.0),
             child: Text(
               label!,
               style: TextStyle(
@@ -529,24 +546,23 @@ class PollOption extends StatelessWidget {
               ),
             ),
           ),
-        Expanded(
-          child: Container(
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-            decoration: BoxDecoration(
-              color: selected ? Colors.lightBlueAccent : Colors.transparent,
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: Colors.white24),
-            ),
-            child: Center(
-              child: Text(
-                text,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: selected ? Colors.white : Colors.white,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16,
-                ),
+        Container(
+          width: 287,
+          height: 40,
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: selected ? Colors.lightBlueAccent : Colors.transparent,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: Colors.white24),
+          ),
+          child: Center(
+            child: Text(
+              text,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: selected ? Colors.white : Colors.white,
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
               ),
             ),
           ),
