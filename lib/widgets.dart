@@ -54,6 +54,27 @@ class PostCard extends StatelessWidget {
                           ),
                         ),
                       ),
+                      Positioned.fill(
+                        child: Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Padding(
+                            padding: EdgeInsets.only(bottom: 16),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                CircleAvatar(
+                                    radius: 4, backgroundColor: Colors.white),
+                                SizedBox(width: 6),
+                                CircleAvatar(
+                                    radius: 4, backgroundColor: Colors.white54),
+                                SizedBox(width: 6),
+                                CircleAvatar(
+                                    radius: 4, backgroundColor: Colors.white54),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                   Padding(
@@ -173,8 +194,11 @@ class VideoCard extends StatelessWidget {
                       ),
                       Positioned.fill(
                         child: Center(
-                          child: Icon(Icons.play_circle_fill,
-                              color: Colors.white, size: 48),
+                          child: Image.asset(
+                            'assets/images/play_button.png',
+                            width: 48,
+                            height: 48,
+                          ),
                         ),
                       ),
                       Positioned(
@@ -188,6 +212,27 @@ class VideoCard extends StatelessWidget {
                             child: Image.asset(
                               'assets/images/language.png',
                               fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned.fill(
+                        child: Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Padding(
+                            padding: EdgeInsets.only(bottom: 16),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                CircleAvatar(
+                                    radius: 4, backgroundColor: Colors.white),
+                                SizedBox(width: 6),
+                                CircleAvatar(
+                                    radius: 4, backgroundColor: Colors.white54),
+                                SizedBox(width: 6),
+                                CircleAvatar(
+                                    radius: 4, backgroundColor: Colors.white54),
+                              ],
                             ),
                           ),
                         ),
@@ -339,20 +384,27 @@ class TextCard extends StatelessWidget {
                           ),
                         ),
                         // Page indicator
-                        const Positioned(
-                          bottom: 16,
-                          left: 24,
-                          child: Row(
-                            children: [
-                              CircleAvatar(
-                                  radius: 4, backgroundColor: Colors.white),
-                              SizedBox(width: 6),
-                              CircleAvatar(
-                                  radius: 4, backgroundColor: Colors.white54),
-                              SizedBox(width: 6),
-                              CircleAvatar(
-                                  radius: 4, backgroundColor: Colors.white54),
-                            ],
+                        const Positioned.fill(
+                          child: Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Padding(
+                              padding: EdgeInsets.only(bottom: 16),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  CircleAvatar(
+                                      radius: 4, backgroundColor: Colors.white),
+                                  SizedBox(width: 6),
+                                  CircleAvatar(
+                                      radius: 4,
+                                      backgroundColor: Colors.white54),
+                                  SizedBox(width: 6),
+                                  CircleAvatar(
+                                      radius: 4,
+                                      backgroundColor: Colors.white54),
+                                ],
+                              ),
+                            ),
                           ),
                         ),
                       ],
