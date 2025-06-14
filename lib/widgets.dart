@@ -408,14 +408,45 @@ class ActionBar extends StatelessWidget {
               const SizedBox(width: 10),
               Text("|", style: TextStyle(color: Colors.white, fontSize: 20)),
               const SizedBox(width: 10),
-              Icon(Icons.thumb_up_alt_rounded, color: Colors.blue, size: 20),
-              Icon(Icons.favorite, color: Colors.pinkAccent, size: 20),
-              Icon(Icons.emoji_emotions, color: Colors.amber, size: 20),
-              const SizedBox(width: 4),
-              Text('5k+', style: TextStyle(color: Colors.white)),
-              const SizedBox(width: 8),
-              Icon(Icons.thumb_up_alt_outlined, color: Colors.white, size: 20),
-              const SizedBox(width: 10),
+              Row(
+                children: [
+                  Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Positioned(
+                        left: 40,
+                        child: CircleAvatar(
+                          radius: 12,
+                          backgroundColor: Colors.amber,
+                          child: const Icon(Icons.emoji_emotions,
+                              color: Colors.white, size: 16),
+                        ),
+                      ),
+                      Positioned(
+                        left: 20,
+                        child: CircleAvatar(
+                          radius: 12,
+                          backgroundColor: Colors.pinkAccent,
+                          child: const Icon(Icons.favorite,
+                              color: Colors.white, size: 16),
+                        ),
+                      ),
+                      const CircleAvatar(
+                        radius: 12,
+                        backgroundColor: Colors.blue,
+                        child: Icon(Icons.thumb_up_alt_rounded,
+                            color: Colors.white, size: 16),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(width: 45),
+                  Text('5k+', style: TextStyle(color: Colors.white)),
+                  const SizedBox(width: 8),
+                  Icon(Icons.thumb_up_alt_outlined,
+                      color: Colors.white, size: 20),
+                  const SizedBox(width: 10),
+                ],
+              ),
               Text("|", style: TextStyle(color: Colors.white, fontSize: 20)),
               const SizedBox(width: 8),
               Text('50', style: TextStyle(color: Colors.white)),
@@ -442,7 +473,7 @@ class TopNavBar extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
             margin: const EdgeInsets.only(right: 8),
             decoration: BoxDecoration(
-                 color: const Color(0xFF1C4955),
+              color: const Color(0xFF1C4955),
               borderRadius: BorderRadius.circular(50),
               border: Border.all(color: Color(0xFF00B2FF), width: 2),
             ),
