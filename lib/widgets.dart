@@ -25,17 +25,36 @@ class PostCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16),
-                    ),
-                    child: Image.asset(
-                      imagePath,
-                      width: double.infinity,
-                      height: 246,
-                      fit: BoxFit.cover,
-                    ),
+                  Stack(
+                    children: [
+                      ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(16),
+                          topRight: Radius.circular(16),
+                        ),
+                        child: Image.asset(
+                          imagePath,
+                          width: double.infinity,
+                          height: 246,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 16,
+                        right: 16,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: SizedBox(
+                            width: 44,
+                            height: 34,
+                            child: Image.asset(
+                              'assets/images/language.png',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
@@ -158,6 +177,21 @@ class VideoCard extends StatelessWidget {
                               color: Colors.white, size: 48),
                         ),
                       ),
+                      Positioned(
+                        bottom: 16,
+                        right: 16,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: SizedBox(
+                            width: 44,
+                            height: 34,
+                            child: Image.asset(
+                              'assets/images/language.png',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                   Padding(
@@ -263,9 +297,9 @@ class TextCard extends StatelessWidget {
                 children: [
                   // Orange Top Section
                   Container(
-                    height: 200,
+                    height: 240,
                     decoration: const BoxDecoration(
-                      color: Color(0xFFFF8C00),
+                      color: Color(0xFFE38200),
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(16),
                         topRight: Radius.circular(16),
@@ -273,14 +307,18 @@ class TextCard extends StatelessWidget {
                     ),
                     child: Stack(
                       children: [
-                        const Padding(
-                          padding: EdgeInsets.all(24.0),
-                          child: Text(
-                            'Discover the journey and mindset of this inspiring individual',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 22,
+                        Center(
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 24.0),
+                            child: Text(
+                              'Discover the journey and mindset of this inspiring individual',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 32,
+                              ),
                             ),
                           ),
                         ),
@@ -288,14 +326,16 @@ class TextCard extends StatelessWidget {
                         Positioned(
                           bottom: 16,
                           right: 16,
-                          child: Container(
-                            padding: const EdgeInsets.all(6),
-                            decoration: BoxDecoration(
-                              color: Colors.black54,
-                              borderRadius: BorderRadius.circular(8),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: SizedBox(
+                              width: 44,
+                              height: 34,
+                              child: Image.asset(
+                                'assets/images/language.png',
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                            child: const Icon(Icons.translate,
-                                color: Colors.white),
                           ),
                         ),
                         // Page indicator
