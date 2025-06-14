@@ -18,29 +18,30 @@ class HomePage extends StatelessWidget {
         title: Row(
           children: [
             const SizedBox(width: 8),
-            Container(
-              width: 238,
-              height: 40,
-              decoration: BoxDecoration(
-                color: const Color(0xFF232E3C),
-                borderRadius: BorderRadius.circular(100),
-              ),
-              child: Row(
-                children: [
-                  const SizedBox(width: 12),
-                  const Icon(Icons.search, color: Colors.white54),
-                  const SizedBox(width: 8),
-                  const Expanded(
-                    child: TextField(
-                      style: TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
-                        hintText: 'Search here...',
-                        hintStyle: TextStyle(color: Colors.white54),
-                        border: InputBorder.none,
+            Expanded(
+              child: Container(
+                height: 40,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF232E3C),
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                child: Row(
+                  children: [
+                    const SizedBox(width: 12),
+                    const Icon(Icons.search, color: Colors.white54),
+                    const SizedBox(width: 8),
+                    const Expanded(
+                      child: TextField(
+                        style: TextStyle(color: Colors.white),
+                        decoration: InputDecoration(
+                          hintText: 'Search here...',
+                          hintStyle: TextStyle(color: Colors.white54),
+                          border: InputBorder.none,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],
