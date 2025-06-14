@@ -723,7 +723,7 @@ class ActionBar extends StatelessWidget {
             const SizedBox(width: 5),
             Icon(CupertinoIcons.chat_bubble, color: Colors.white, size: 22),
             const SizedBox(width: 8),
-            Text("|", style: TextStyle(color: Colors.white, fontSize: 18)),
+            Text("|", style: TextStyle(color: Colors.white54, fontSize: 28)),
             const SizedBox(width: 8),
             Row(
               children: [
@@ -765,7 +765,7 @@ class ActionBar extends StatelessWidget {
                 const SizedBox(width: 8),
               ],
             ),
-            Text("|", style: TextStyle(color: Colors.white, fontSize: 18)),
+            Text("|", style: TextStyle(color: Colors.white54, fontSize: 28)),
             const SizedBox(width: 8),
             Text('50', style: TextStyle(color: Colors.white, fontSize: 12)),
             const SizedBox(width: 5),
