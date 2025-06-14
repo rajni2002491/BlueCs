@@ -127,6 +127,150 @@ class HomePage extends StatelessWidget {
             ),
           ),
           SizedBox(height: 15),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            child: Center(
+              child: Container(
+                width: 385,
+                constraints: BoxConstraints(maxWidth: 430),
+                height: 430,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF23313F),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border(
+                    left: BorderSide(color: Colors.black, width: 1),
+                    right: BorderSide(color: Colors.black, width: 1),
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        topRight: Radius.circular(10),
+                      ),
+                      child: Image.asset(
+                        'assets/images/bluecs1.png',
+                        width: double.infinity,
+                        height: 243,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Text('5 days ago',
+                                  style: TextStyle(
+                                      color: Colors.white54, fontSize: 12)),
+                              Spacer(),
+                              Icon(Icons.remove_red_eye,
+                                  color: Colors.white54, size: 16),
+                              SizedBox(width: 4),
+                              Text('25k',
+                                  style: TextStyle(
+                                      color: Colors.white54, fontSize: 12)),
+                            ],
+                          ),
+                          SizedBox(height: 8),
+                          Text(
+                            'Top 10 AI Tools You Should Know in 2025',
+                            style: TextStyle(
+                              fontFamily: 'Arial',
+                              color: Colors.white,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18,
+                              height: 22 / 18,
+                              letterSpacing: 0,
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            'Stay Ahead with These Game-Changing AI Tools',
+                            style:
+                                TextStyle(color: Colors.white70, fontSize: 14),
+                          ),
+                          SizedBox(height: 12),
+                          Row(
+                            children: [
+                              CircleAvatar(
+                                backgroundImage: NetworkImage(
+                                    'https://randomuser.me/api/portraits/men/32.jpg'),
+                                radius: 18,
+                              ),
+                              SizedBox(width: 8),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('TechSavvy',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold)),
+                                  Text('Content Creator',
+                                      style: TextStyle(
+                                          color: Colors.white54, fontSize: 12)),
+                                ],
+                              ),
+                              Spacer(),
+                              Icon(Icons.block,
+                                  color: Colors.white38, size: 20),
+                            ],
+                          ),
+                          SizedBox(height: 12),
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 8, horizontal: 12),
+                            decoration: BoxDecoration(
+                              color: Color(0xFF232E3C),
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(Icons.comment,
+                                        color: Colors.white54, size: 20),
+                                    SizedBox(width: 4),
+                                    Text('310',
+                                        style: TextStyle(color: Colors.white)),
+                                  ],
+                                ),
+                                SizedBox(width: 16),
+                                Row(
+                                  children: [
+                                    Icon(Icons.favorite,
+                                        color: Colors.pinkAccent, size: 20),
+                                    SizedBox(width: 4),
+                                    Text('5k+',
+                                        style: TextStyle(color: Colors.white)),
+                                  ],
+                                ),
+                                SizedBox(width: 16),
+                                Row(
+                                  children: [
+                                    Icon(Icons.share,
+                                        color: Colors.white54, size: 20),
+                                    SizedBox(width: 4),
+                                    Text('50',
+                                        style: TextStyle(color: Colors.white)),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
