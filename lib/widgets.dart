@@ -1,38 +1,5 @@
 import 'package:flutter/material.dart';
 
-// Helper widget for fallback image
-class FallbackImage extends StatelessWidget {
-  final String assetPath;
-  final String networkUrl;
-  final double? width;
-  final double? height;
-  final BoxFit? fit;
-  const FallbackImage({
-    required this.assetPath,
-    required this.networkUrl,
-    this.width,
-    this.height,
-    this.fit,
-  });
-  @override
-  Widget build(BuildContext context) {
-    return Image.asset(
-      assetPath,
-      width: width,
-      height: height,
-      fit: fit,
-      errorBuilder: (context, error, stackTrace) {
-        return Image.network(
-          networkUrl,
-          width: width,
-          height: height,
-          fit: fit,
-        );
-      },
-    );
-  }
-}
-
 // Helper for fallback avatar
 class FallbackAvatar extends StatelessWidget {
   final String assetPath;
@@ -65,97 +32,102 @@ class FallbackAvatar extends StatelessWidget {
 }
 
 class PostCard extends StatelessWidget {
+  final String imagePath;
+  const PostCard({required this.imagePath});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: const Color(0xFF23313F),
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(16),
-                topRight: Radius.circular(16),
+      child: Center(
+        child: Container(
+          width: 375,
+          decoration: BoxDecoration(
+            color: const Color(0xFF23313F),
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Colors.black, width: 1),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(16),
+                  topRight: Radius.circular(16),
+                ),
+                child: Image.asset(
+                  imagePath,
+                  width: double.infinity,
+                  height: 180,
+                  fit: BoxFit.cover,
+                ),
               ),
-              child: FallbackImage(
-                assetPath: 'assets/images/bluecs1.png',
-                networkUrl:
-                    'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
-                width: double.infinity,
-                height: 180,
-                fit: BoxFit.cover,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Text('5 days ago',
-                          style:
-                              TextStyle(color: Colors.white54, fontSize: 12)),
-                      const Spacer(),
-                      Icon(Icons.remove_red_eye,
-                          color: Colors.white54, size: 16),
-                      const SizedBox(width: 4),
-                      Text('25k',
-                          style:
-                              TextStyle(color: Colors.white54, fontSize: 12)),
-                    ],
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Top 10 AI Tools You Should Know in 2025',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 18,
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text('5 days ago',
+                            style:
+                                TextStyle(color: Colors.white54, fontSize: 12)),
+                        const Spacer(),
+                        Icon(Icons.remove_red_eye,
+                            color: Colors.white54, size: 16),
+                        const SizedBox(width: 4),
+                        Text('25k',
+                            style:
+                                TextStyle(color: Colors.white54, fontSize: 12)),
+                      ],
                     ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    'Stay Ahead with These Game-Changing AI Tools',
-                    style: TextStyle(color: Colors.white70, fontSize: 12),
-                  ),
-                  const SizedBox(height: 12),
-                  Row(
-                    children: [
-                      FallbackAvatar(
-                        assetPath: 'assets/images/techsavvy.png',
-                        networkUrl:
-                            'https://randomuser.me/api/portraits/men/32.jpg',
-                        radius: 18,
+                    const SizedBox(height: 8),
+                    Text(
+                      'Top 10 AI Tools You Should Know in 2025',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
                       ),
-                      const SizedBox(width: 8),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('TechSavvy',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20)),
-                          Text('Content Creator',
-                              style: TextStyle(
-                                  color: Colors.white54, fontSize: 12)),
-                        ],
-                      ),
-                      const Spacer(),
-                      Icon(Icons.block, color: Colors.red, size: 20),
-                    ],
-                  ),
-                ],
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      'Stay Ahead with These Game-Changing AI Tools',
+                      style: TextStyle(color: Colors.white70, fontSize: 12),
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      children: [
+                        FallbackAvatar(
+                          assetPath: 'assets/images/techsavvy.png',
+                          networkUrl:
+                              'https://randomuser.me/api/portraits/men/32.jpg',
+                          radius: 18,
+                        ),
+                        const SizedBox(width: 8),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('TechSavvy',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20)),
+                            Text('Content Creator',
+                                style: TextStyle(
+                                    color: Colors.white54, fontSize: 12)),
+                          ],
+                        ),
+                        const Spacer(),
+                        Icon(Icons.block, color: Colors.red, size: 20),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-            ActionBar(),
-          ],
+              ActionBar(),
+            ],
+          ),
         ),
       ),
     );
@@ -167,103 +139,105 @@ class VideoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: const Color(0xFF23313F),
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Stack(
-              children: [
-                ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(16),
-                    topRight: Radius.circular(16),
-                  ),
-                  child: FallbackImage(
-                    assetPath: 'assets/images/video_thumb.png',
-                    networkUrl:
-                        'https://images.unsplash.com/photo-1464983953574-0892a716854b',
-                    width: double.infinity,
-                    height: 180,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                Positioned.fill(
-                  child: Center(
-                    child: Icon(Icons.play_circle_fill,
-                        color: Colors.white, size: 48),
-                  ),
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+      child: Center(
+        child: Container(
+          width: 375,
+          decoration: BoxDecoration(
+            color: const Color(0xFF23313F),
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Colors.black, width: 1),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Stack(
                 children: [
-                  Row(
-                    children: [
-                      Text('2 hours ago',
-                          style:
-                              TextStyle(color: Colors.white54, fontSize: 12)),
-                      const Spacer(),
-                      Icon(Icons.remove_red_eye,
-                          color: Colors.white54, size: 16),
-                      const SizedBox(width: 4),
-                      Text('12k',
-                          style:
-                              TextStyle(color: Colors.white54, fontSize: 12)),
-                    ],
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Top 10 AI Tools You Should Know in 2025',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 18,
+                  ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(16),
+                      topRight: Radius.circular(16),
+                    ),
+                    child: Image.asset(
+                      'assets/images/video.png',
+                      width: double.infinity,
+                      height: 180,
+                      fit: BoxFit.cover,
                     ),
                   ),
-                  const SizedBox(height: 4),
-                  Text(
-                    'Stay Ahead with These Game-Changing AI Tools',
-                    style: TextStyle(color: Colors.white70, fontSize: 12),
-                  ),
-                  const SizedBox(height: 12),
-                  Row(
-                    children: [
-                      FallbackAvatar(
-                        assetPath: 'assets/images/techsavvy.png',
-                        networkUrl:
-                            'https://randomuser.me/api/portraits/men/32.jpg',
-                        radius: 18,
-                      ),
-                      const SizedBox(width: 8),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('TechSavvy',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20)),
-                          Text('Content Creator',
-                              style: TextStyle(
-                                  color: Colors.white54, fontSize: 12)),
-                        ],
-                      ),
-                      const Spacer(),
-                      Icon(Icons.block, color: Colors.red, size: 20),
-                    ],
+                  Positioned.fill(
+                    child: Center(
+                      child: Icon(Icons.play_circle_fill,
+                          color: Colors.white, size: 48),
+                    ),
                   ),
                 ],
               ),
-            ),
-            ActionBar(),
-          ],
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text('2 hours ago',
+                            style:
+                                TextStyle(color: Colors.white54, fontSize: 12)),
+                        const Spacer(),
+                        Icon(Icons.remove_red_eye,
+                            color: Colors.white54, size: 16),
+                        const SizedBox(width: 4),
+                        Text('12k',
+                            style:
+                                TextStyle(color: Colors.white54, fontSize: 12)),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Top 10 AI Tools You Should Know in 2025',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      'Stay Ahead with These Game-Changing AI Tools',
+                      style: TextStyle(color: Colors.white70, fontSize: 12),
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      children: [
+                        FallbackAvatar(
+                          assetPath: 'assets/images/techsavvy.png',
+                          networkUrl:
+                              'https://randomuser.me/api/portraits/men/32.jpg',
+                          radius: 18,
+                        ),
+                        const SizedBox(width: 8),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('TechSavvy',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20)),
+                            Text('Content Creator',
+                                style: TextStyle(
+                                    color: Colors.white54, fontSize: 12)),
+                          ],
+                        ),
+                        const Spacer(),
+                        Icon(Icons.block, color: Colors.red, size: 20),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              ActionBar(),
+            ],
+          ),
         ),
       ),
     );
@@ -275,27 +249,31 @@ class TextCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.orange[700],
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Text(
-                'Discover the journey and mindset of this inspiring individual',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
+      child: Center(
+        child: Container(
+          width: 375,
+          decoration: BoxDecoration(
+            color: Colors.orange[700],
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Colors.black, width: 1),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(24.0),
+                child: Text(
+                  'Discover the journey and mindset of this inspiring individual',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
                 ),
               ),
-            ),
-            ActionBar(),
-          ],
+              ActionBar(),
+            ],
+          ),
         ),
       ),
     );
@@ -307,82 +285,86 @@ class PollCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: const Color(0xFF23313F),
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Text('5 min ago',
-                          style:
-                              TextStyle(color: Colors.white54, fontSize: 12)),
-                      const Spacer(),
-                      Icon(Icons.remove_red_eye,
-                          color: Colors.white54, size: 16),
-                      const SizedBox(width: 4),
-                      Text('2k',
-                          style:
-                              TextStyle(color: Colors.white54, fontSize: 12)),
-                    ],
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    'What is the most important factor when choosing a new job?',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 16,
+      child: Center(
+        child: Container(
+          width: 375,
+          decoration: BoxDecoration(
+            color: const Color(0xFF23313F),
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Colors.black, width: 1),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text('5 min ago',
+                            style:
+                                TextStyle(color: Colors.white54, fontSize: 12)),
+                        const Spacer(),
+                        Icon(Icons.remove_red_eye,
+                            color: Colors.white54, size: 16),
+                        const SizedBox(width: 4),
+                        Text('2k',
+                            style:
+                                TextStyle(color: Colors.white54, fontSize: 12)),
+                      ],
                     ),
-                  ),
-                  const SizedBox(height: 12),
-                  PollOption(text: 'Salary & Benefits', selected: true),
-                  const SizedBox(height: 8),
-                  PollOption(text: 'Work-Life Balance'),
-                  const SizedBox(height: 8),
-                  PollOption(text: 'Career Growth Opportunities'),
-                  const SizedBox(height: 8),
-                  PollOption(text: 'Company Culture'),
-                  const SizedBox(height: 12),
-                  Row(
-                    children: [
-                      FallbackAvatar(
-                        assetPath: 'assets/images/techsavvy.png',
-                        networkUrl:
-                            'https://randomuser.me/api/portraits/men/32.jpg',
-                        radius: 18,
+                    const SizedBox(height: 8),
+                    Text(
+                      'What is the most important factor when choosing a new job?',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16,
                       ),
-                      const SizedBox(width: 8),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('TechSavvy',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20)),
-                          Text('Content Creator',
-                              style: TextStyle(
-                                  color: Colors.white54, fontSize: 12)),
-                        ],
-                      ),
-                      const Spacer(),
-                      Icon(Icons.block, color: Colors.red, size: 20),
-                    ],
-                  ),
-                ],
+                    ),
+                    const SizedBox(height: 12),
+                    PollOption(text: 'Salary & Benefits', selected: true),
+                    const SizedBox(height: 8),
+                    PollOption(text: 'Work-Life Balance'),
+                    const SizedBox(height: 8),
+                    PollOption(text: 'Career Growth Opportunities'),
+                    const SizedBox(height: 8),
+                    PollOption(text: 'Company Culture'),
+                    const SizedBox(height: 12),
+                    Row(
+                      children: [
+                        FallbackAvatar(
+                          assetPath: 'assets/images/techsavvy.png',
+                          networkUrl:
+                              'https://randomuser.me/api/portraits/men/32.jpg',
+                          radius: 18,
+                        ),
+                        const SizedBox(width: 8),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('TechSavvy',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20)),
+                            Text('Content Creator',
+                                style: TextStyle(
+                                    color: Colors.white54, fontSize: 12)),
+                          ],
+                        ),
+                        const Spacer(),
+                        Icon(Icons.block, color: Colors.red, size: 20),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-            ActionBar(),
-          ],
+              ActionBar(),
+            ],
+          ),
         ),
       ),
     );
@@ -413,7 +395,6 @@ class PollOption extends StatelessWidget {
     );
   }
 }
-
 
 class ActionBar extends StatelessWidget {
   @override

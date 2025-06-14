@@ -62,14 +62,15 @@ class HomePage extends StatelessWidget {
           const SizedBox(height: 15),
           TopNavBar(),
           const SizedBox(height: 15),
-          PostCard(),
+          PostCard(imagePath: 'assets/images/bluecs1.png'),
+          const SizedBox(height: 15),
+          PostCard(imagePath: 'assets/images/bluecs2.png'),
           const SizedBox(height: 15),
           VideoCard(),
           const SizedBox(height: 15),
           TextCard(),
           const SizedBox(height: 15),
           PollCard(),
-         
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
