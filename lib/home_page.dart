@@ -104,7 +104,13 @@ class HomePage extends StatelessWidget {
         unselectedItemColor: Colors.white,
         type: BottomNavigationBarType.fixed,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Image.asset(
+                'assets/images/home.png',
+                width: 24,
+                height: 24,
+              ),
+              label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Jobs'),
           BottomNavigationBarItem(icon: Icon(Icons.store), label: 'Stores'),
           BottomNavigationBarItem(

@@ -49,16 +49,19 @@ class PostCard extends StatelessWidget {
                         ),
                       ),
                       Positioned(
-                        bottom: 16,
-                        right: 16,
+                        top: 191,
+                        left: 285,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8),
-                          child: SizedBox(
-                            width: 44,
+                          child: Container(
+                            width: 56,
                             height: 34,
+                            color: Color(0xCC161F28),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 9, vertical: 5),
                             child: Image.asset(
                               'assets/images/language.png',
-                              fit: BoxFit.cover,
+                              fit: BoxFit.contain,
                             ),
                           ),
                         ),
@@ -211,16 +214,19 @@ class VideoCard extends StatelessWidget {
                         ),
                       ),
                       Positioned(
-                        bottom: 16,
-                        right: 16,
+                        top: 191,
+                        left: 285,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8),
-                          child: SizedBox(
-                            width: 44,
+                          child: Container(
+                            width: 56,
                             height: 34,
+                            color: Color(0xCC161F28),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 9, vertical: 5),
                             child: Image.asset(
                               'assets/images/language.png',
-                              fit: BoxFit.cover,
+                              fit: BoxFit.contain,
                             ),
                           ),
                         ),
@@ -378,16 +384,19 @@ class TextCard extends StatelessWidget {
                         ),
                         // Language icon
                         Positioned(
-                          bottom: 16,
-                          right: 16,
+                          top: 191,
+                          left: 285,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8),
-                            child: SizedBox(
-                              width: 44,
+                            child: Container(
+                              width: 56,
                               height: 34,
+                              color: Color(0xCC161F28),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 9, vertical: 5),
                               child: Image.asset(
                                 'assets/images/language.png',
-                                fit: BoxFit.cover,
+                                //fit: BoxFit.cover,
                               ),
                             ),
                           ),
@@ -441,7 +450,8 @@ class TextCard extends StatelessWidget {
                                 SizedBox(width: 4),
                                 Text("25k",
                                     style: TextStyle(
-                                        color: Color(0xFF82B4DF), fontSize: 12)),
+                                        color: Color(0xFF82B4DF),
+                                        fontSize: 12)),
                               ],
                             )
                           ],
@@ -546,7 +556,8 @@ class PollCard extends StatelessWidget {
                                 const SizedBox(width: 4),
                                 Text('25k',
                                     style: TextStyle(
-                                        color: Color(0xFF82B4DF), fontSize: 12)),
+                                        color: Color(0xFF82B4DF),
+                                        fontSize: 12)),
                               ],
                             ),
                           ],
@@ -759,7 +770,7 @@ class ActionBar extends StatelessWidget {
             Text('50', style: TextStyle(color: Colors.white, fontSize: 12)),
             const SizedBox(width: 5),
             Icon(CupertinoIcons.arrowshape_turn_up_right,
-                color: Colors.white, size: 22),
+                color: Colors.white, size: 20),
           ],
         ),
       ),
